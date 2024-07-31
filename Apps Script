@@ -1,0 +1,49 @@
+function createCalendarEvent() {
+  var sheetUrl = 'https://docs.google.com/spreadsheets/d/YOUR_SPREADSHEET_ID/edit'; // Replace with your Google Sheets URL
+  var spreadsheet = SpreadsheetApp.openByUrl(sheetUrl);
+  var sheetName = 'Sheet1';
+  var sheet = spreadsheet.getSheetByName(sheetName);
+  
+  if (!sheet) {
+    Logger.log("Sheet not found: " + sheetName);
+    return;
+  }
+  
+  var calendarId = 'your_calendar_id@group.calendar.google.com'; // Replace with your Google Calendar ID
+  var calendar = CalendarApp.getCalendarById(calendarId);
+  
+  var data = sheet.getDataRange().getValues();
+  
+  for (var i = 1; i < data.length; i++) {
+    var eventTitle = data[i][1]; // Event name from 2nd column
+    var eventDate = new Date(data[i][5]); // Date from 6th column
+    var col3 = data[i][2]; // Data from 3rd column
+    var col4 = data[i][3]; // Data from 4th column
+    var col5 = data[i][4]; // Data from 5th column
+    var col8 = data[i][8]; // Data from 8th column
+
+    // Creating a description using columns 3, 4, 5, and 8
+    var description = "Column 3: " + col3 + "\n" +
+                      "Column 4: " + col4 + "\n" +
+                      "Column 5: " + col5 + "\n" +
+                      "Column 8: " + col8;
+
+    // Creating an all-day event
+    var event = calendar.createAllDayEvent(eventTitle, eventDate, {description: description});
+
+    event.addPopupReminder(14 * 60); // Adds a popup reminder 1 day before the event and 5 days ago
+    event.addPopupReminder(7 * 14 * 60)
+
+  }
+}
+
+function onOpen() {
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu('Calendar Events')
+      .addItem('Post to Calendar', 'createCalendarEvent')
+      .addToUi();
+}
+
+function onEdit(e) {
+  createCalendarEvent();
+}
