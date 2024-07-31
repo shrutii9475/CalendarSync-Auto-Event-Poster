@@ -2,19 +2,19 @@
 
 ## Key Features
 
-### 1. Automatic Event Creation:
+**1. Automatic Event Creation:**
 The tool automatically creates calendar events based on the information you input into a Google Sheets document.
 
-### 2. All-Day Events:
+**2. All-Day Events:**
 Events are created as all-day entries, so you don’t need to worry about setting specific start and end times.
 
-### 3. Custom Descriptions:
+**3. Custom Descriptions:**
 Each event includes a detailed description generated from specific columns in your Google Sheets, ensuring that you have all the necessary information at your fingertips.
 
-### 4. Reminders:
+**4. Reminders:**
 The tool automatically sets a reminder for each event, notifying you one day in advance to help you stay on top of your schedule.
 
-### 5. Real-Time Updates:
+**5. Real-Time Updates:**
 Whenever you update the Google Sheets document, the changes are reflected in your Google Calendar automatically, keeping everything synchronized.
 
 ## Prerequisites
