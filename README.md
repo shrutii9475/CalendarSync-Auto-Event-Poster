@@ -54,7 +54,7 @@ Whenever you update the Google Sheets document, the changes are reflected in you
 2. Click on Add Trigger.
 3. Choose the onEdit function.
 4. Set the event type to "From spreadsheet" and "On edit."
-5. 
+ 
 ### Manual Execution
 You can manually run the script from the Apps Script editor by clicking the play button.
 Alternatively, you can use the custom menu Calendar Events > Post to Calendar in your Google Sheet.
